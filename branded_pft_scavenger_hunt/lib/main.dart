@@ -18,23 +18,42 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   
-  static const List<Widget> _pages = [
-    FirstFloorPage(),
-    SecondFloorPage(),
-    ThirdFloorPage(),
-    MapPage(),
-  ];
-
+  // Maintain states for each floor
+  final List<int> _floorIndices = [0, 0, 0]; // For 1st, 2nd, and 3rd floors
+  
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
+  void _updateFloorIndex(int floorIndex, int newIndex) {
+    setState(() {
+      _floorIndices[floorIndex] = newIndex;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          FirstFloorPage(
+            currentIndex: _floorIndices[0],
+            onIndexChanged: (index) => _updateFloorIndex(0, index),
+          ),
+          SecondFloorPage(
+            currentIndex: _floorIndices[1],
+            onIndexChanged: (index) => _updateFloorIndex(1, index),
+          ),
+          ThirdFloorPage(
+            currentIndex: _floorIndices[2],
+            onIndexChanged: (index) => _updateFloorIndex(2, index),
+          ),
+          const MapPage(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,

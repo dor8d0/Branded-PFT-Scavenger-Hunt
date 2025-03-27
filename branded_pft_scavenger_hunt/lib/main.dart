@@ -5,7 +5,55 @@ import 'pages/third_floor_page.dart';
 import 'pages/map_page.dart';
 
 void main() {
-  runApp(const MaterialApp(home: MainScreen()));
+  runApp(MaterialApp(
+    home: const MainScreen(),
+    theme: ThemeData(
+      primaryColor: const Color(0xFF461D7C), // LSU Purple
+      colorScheme: ColorScheme.light(
+        primary: const Color(0xFF461D7C), // LSU Purple
+        secondary: const Color(0xFFFDD023), // LSU Gold
+        surface: Colors.white,
+        background: Colors.white,
+        error: Colors.red,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFF461D7C), // LSU Purple
+        foregroundColor: Color(0xFFFDD023), // LSU Gold
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF461D7C), // LSU Purple
+          foregroundColor: const Color(0xFFFDD023), // LSU Gold
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+      radioTheme: RadioThemeData(
+        fillColor: MaterialStateProperty.all(const Color(0xFF461D7C)), // LSU Purple
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Color(0xFF461D7C)), // LSU Purple
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Color(0xFF461D7C), width: 2), // LSU Purple
+        ),
+        hintStyle: const TextStyle(color: Colors.grey),
+        errorStyle: const TextStyle(color: Colors.red),
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Color(0xFF461D7C), // LSU Purple
+        selectedItemColor: Color(0xFFFDD023), // LSU Gold
+        unselectedItemColor: Colors.white70,
+        type: BottomNavigationBarType.fixed,
+        elevation: 8,
+      ),
+    ),
+  ));
 }
 
 class MainScreen extends StatefulWidget {
@@ -55,7 +103,6 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const [

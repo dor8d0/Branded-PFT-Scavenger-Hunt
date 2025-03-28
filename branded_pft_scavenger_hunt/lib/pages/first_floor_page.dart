@@ -16,6 +16,7 @@ class FirstFloorPage extends StatelessWidget {
     FirstFloorQ3(),
     FirstFloorQ4(),
     FirstFloorQ5(),
+    FirstFloorComplete(),
   ];
 
   @override
@@ -450,8 +451,109 @@ class _FirstFloorQ4State extends State<FirstFloorQ4> {
   }
 }
 
-class FirstFloorQ5 extends StatelessWidget {
+class FirstFloorQ5 extends StatefulWidget {
   const FirstFloorQ5({super.key});
+
+  @override
+  State<FirstFloorQ5> createState() => _FirstFloorQ5State();
+}
+
+class _FirstFloorQ5State extends State<FirstFloorQ5> {
+  int? _selectedAnswer;
+
+  void _handleAnswerSelection(int? value) {
+    setState(() {
+      _selectedAnswer = value;
+    });
+
+    // If the correct answer (3) is selected, show alert and navigate
+    if (_selectedAnswer == 3) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Congratulations!'),
+            content: const Text('You have completed the first floor!'),
+            actions: [
+              TextButton(
+                onPressed: () async {
+                  Navigator.of(context).pop(); // Close the dialog
+                  // Add a small delay to ensure the dialog is closed
+                  await Future.delayed(const Duration(milliseconds: 100));
+                  if (mounted) { // Check if widget is still mounted
+                    final firstFloorPage = context.findAncestorWidgetOfExactType<FirstFloorPage>();
+                    firstFloorPage?.onIndexChanged(5); // Navigate to complete page
+                  }
+                },
+                child: const Text('Continue'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('1st Floor'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Question 5:',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'How many bathrooms are on the first floor?',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 24),
+            RadioListTile<int>(
+              title: const Text('4'),
+              value: 1,
+              groupValue: _selectedAnswer,
+              onChanged: _handleAnswerSelection,
+            ),
+            RadioListTile<int>(
+              title: const Text('5'),
+              value: 2,
+              groupValue: _selectedAnswer,
+              onChanged: _handleAnswerSelection,
+            ),
+            RadioListTile<int>(
+              title: const Text('6'),
+              value: 3,
+              groupValue: _selectedAnswer,
+              onChanged: _handleAnswerSelection,
+            ),
+            RadioListTile<int>(
+              title: const Text('7'),
+              value: 4,
+              groupValue: _selectedAnswer,
+              onChanged: _handleAnswerSelection,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FirstFloorComplete extends StatelessWidget {
+  const FirstFloorComplete({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -460,7 +562,14 @@ class FirstFloorQ5 extends StatelessWidget {
         title: const Text('1st Floor'),
       ),
       body: const Center(
-        child: Text('First Floor Question 5'),
+        child: Text(
+          'Floor Complete!',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF461D7C), // LSU Purple
+          ),
+        ),
       ),
     );
   }

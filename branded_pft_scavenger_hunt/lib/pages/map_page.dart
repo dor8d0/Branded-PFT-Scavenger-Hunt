@@ -24,6 +24,17 @@ class _MapPageState extends State<MapPage> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              _isFirstFloor ? '1st Floor' : '2nd Floor',
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF461D7C), // LSU Purple
+              ),
+            ),
+          ),
           Expanded(
             child: InteractiveViewer(
               minScale: 0.5,

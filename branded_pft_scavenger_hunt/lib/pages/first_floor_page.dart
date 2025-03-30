@@ -238,37 +238,25 @@ class _FirstFloorQ3State extends State<FirstFloorQ3> {
             ),
             const SizedBox(height: 24),
             RadioListTile<int>(
-              title: const Text(
-                'Red',
-                style: TextStyle(color: Colors.red),
-              ),
+              title: const Text('Red'),
               value: 1,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text(
-                'Gray',
-                style: TextStyle(color: Colors.grey),
-              ),
+              title: const Text('Gray'),
               value: 2,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text(
-                'Light Brown',
-                style: TextStyle(color: Color(0xFFD2B48C)), // Light Brown color
-              ),
+              title: const Text('Light Brown'),
               value: 3,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text(
-                'Purple',
-                style: TextStyle(color: Colors.purple),
-              ),
+              title: const Text('Purple'),
               value: 4,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,

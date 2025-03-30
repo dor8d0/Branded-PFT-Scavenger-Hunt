@@ -77,37 +77,25 @@ class _ThirdFloorQ1State extends State<ThirdFloorQ1> {
             ),
             const SizedBox(height: 24),
             RadioListTile<int>(
-              title: const Text(
-                'Red',
-                style: TextStyle(color: Colors.red),
-              ),
+              title: const Text('Red'),
               value: 1,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text(
-                'Blue',
-                style: TextStyle(color: Colors.blue),
-              ),
+              title: const Text('Blue'),
               value: 2,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text(
-                'Black',
-                style: TextStyle(color: Colors.black),
-              ),
+              title: const Text('Black'),
               value: 3,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text(
-                'Purple',
-                style: TextStyle(color: Colors.purple),
-              ),
+              title: const Text('Purple'),
               value: 4,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,

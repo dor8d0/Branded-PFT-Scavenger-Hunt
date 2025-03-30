@@ -42,8 +42,8 @@ class _FirstFloorQ1State extends State<FirstFloorQ1> {
       _selectedAnswer = value;
     });
 
-    // If the correct answer (2) is selected, navigate to the next page
-    if (_selectedAnswer == 2) {
+    // If the correct answer (1) is selected, navigate to the next page
+    if (_selectedAnswer == 1) {
       // Add a small delay to show the selection before navigating
       Future.delayed(const Duration(milliseconds: 500), () {
         final firstFloorPage = context.findAncestorWidgetOfExactType<FirstFloorPage>();
@@ -72,32 +72,32 @@ class _FirstFloorQ1State extends State<FirstFloorQ1> {
             ),
             const SizedBox(height: 16),
             const Text(
-              'What is the capital of France?',
+              'Which floor is the Chevron Center located on?',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
             const SizedBox(height: 24),
             RadioListTile<int>(
-              title: const Text('London'),
+              title: const Text('1st Floor'),
               value: 1,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text('Paris'),
+              title: const Text('2nd Floor'),
               value: 2,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text('Berlin'),
+              title: const Text('3rd Floor'),
               value: 3,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
             ),
             RadioListTile<int>(
-              title: const Text('Madrid'),
+              title: const Text('Basement'),
               value: 4,
               groupValue: _selectedAnswer,
               onChanged: _handleAnswerSelection,
